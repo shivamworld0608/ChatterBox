@@ -8,7 +8,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
 	cors: {
 		origin: ["https://c-box.vercel.app/"],
-		methods: ["GET", "POST"],
+		methods: ["GET", "POST","OPTIONS"],
 	},
 });
 
