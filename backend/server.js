@@ -32,7 +32,12 @@ app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(cookieParser());
-
+app.use((req, res, next) => {
+    res.setTimeout(120000, () => { // Set timeout to 2 minutes
+        res.status(408).json({ error: 'Request timed out' });
+    });
+    next();
+});
 app.use("/auth",cors(corsOptions), authRoutes);
 app.use("/messages",cors(corsOptions), messageRoutes);
 app.use("/users",cors(corsOptions), userRoutes);
