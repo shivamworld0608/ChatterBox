@@ -33,9 +33,9 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
-app.use("/api/auth",cors(corsOptions), authRoutes);
-app.use("/api/messages",cors(corsOptions), messageRoutes);
-app.use("/api/users",cors(corsOptions), userRoutes);
+app.use("/auth",cors(corsOptions), authRoutes);
+app.use("/messages",cors(corsOptions), messageRoutes);
+app.use("/users",cors(corsOptions), userRoutes);
 
 app.get("/", (req, res) => {
     res.send("Hello, this is the root!");
