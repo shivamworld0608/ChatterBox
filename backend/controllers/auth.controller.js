@@ -19,12 +19,12 @@ export const signup = async (req, res) => {
 		// HASH PASSWORD HERE
 		const salt = await bcrypt.genSalt(10);
 		const hashedPassword = await bcrypt.hash(password, salt);
-
+                  console.log("Password hashing is completed");
 		// https://avatar-placeholder.iran.liara.run/
 
 		const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`;
 		const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`;
-
+                console.log("user is going to create");
 		const newUser = new User({
 			fullName,
 			username,
@@ -37,8 +37,8 @@ export const signup = async (req, res) => {
 			// Generate JWT token here
 			generateTokenAndSetCookie(newUser._id, res);
 			await newUser.save();
-
-			res.status(201).json({
+                       console.log("everything is fine upto this");
+			res.status(200).json({
 				_id: newUser._id,
 				fullName: newUser.fullName,
 				username: newUser.username,
