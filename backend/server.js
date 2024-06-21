@@ -23,7 +23,9 @@ app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
 
-app.get("/",res.send("hello ,how are you")
+app.get("/", (req, res) => {
+    res.send("Hello, this is the root!");
+});
 app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
 app.get("*", (req, res) => {
