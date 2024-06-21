@@ -3,6 +3,15 @@ import http from "http";
 import express from "express";
 
 const app = express();
+const corsOptions = {
+    origin: '*',
+    credential: true,
+    methods: ["GET", "POST", "OPTIONS"],
+};
+
+
+app.options('*', cors(corsOptions));
+app.use(cors(corsOptions));
 
 const server = http.createServer(app);
 const io = new Server(server, {
