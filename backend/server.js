@@ -2,12 +2,13 @@ import path from "path";
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import mongoose from "mongoose";
 
 import authRoutes from "./routes/auth.routes.js";
 import messageRoutes from "./routes/message.routes.js";
 import userRoutes from "./routes/user.routes.js";
 
-import connectToMongoDB from "./db/connectToMongoDB.js";
+/* import connectToMongoDB from "./db/connectToMongoDB.js"; */
 import { app, server } from "./socket/socket.js";
 import cors from "cors";
 const PORT = process.env.PORT || 5001;
@@ -32,12 +33,17 @@ app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(cookieParser());
-app.use((req, res, next) => {
-    res.setTimeout(120000, () => { // Set timeout to 2 minutes
-        res.status(408).json({ error: 'Request timed out' });
+
+try {
+    mongoose.connect(MONGODB_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
     });
-    next();
-});
+    console.log("Connected to mongoDB");
+} catch (error) {
+    console.log("Error: ", error);
+}
+
 app.use("/auth",cors(corsOptions), authRoutes);
 app.use("/messages",cors(corsOptions), messageRoutes);
 app.use("/users",cors(corsOptions), userRoutes);
@@ -51,7 +57,6 @@ app.get("/", (req, res) => {
 app.get("*", (req, res) => {
 	res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
 }); */
-connectToMongoDB();
 server.listen(PORT, () => {
 	connectToMongoDB();
 	console.log(`Server Running on port ${PORT}`);
