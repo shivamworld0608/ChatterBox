@@ -23,6 +23,9 @@ const corsOptions = {
     allowedHeaders: ['Content-Type', 'Authorization']
 };
 app.options('*', cors(corsOptions), (req, res) => {
+    res.set('Access-Control-Allow-Origin', 'https://c-box.vercel.app');  // Update with your client URL
+    res.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     res.sendStatus(200); 
 });
 app.use(cors(corsOptions));
