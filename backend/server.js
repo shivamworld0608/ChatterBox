@@ -35,10 +35,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 try {
-    mongoose.connect(MONGODB_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    });
+    mongoose.connect(MONGODB_URI);
     console.log("Connected to mongoDB");
 } catch (error) {
     console.log("Error: ", error);
