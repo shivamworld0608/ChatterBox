@@ -1,7 +1,7 @@
 import { Server } from "socket.io";
 import http from "http";
 import express from "express";
-
+import cors from "cors";
 const app = express();
 const corsOptions = {
     origin: '*',
@@ -17,7 +17,7 @@ app.use(express.json());
 const server = http.createServer(app);
 const io = new Server(server, {
 	cors: {
-		origin: ["https://c-box.vercel.app/"],
+		origin: ["https://c-box.vercel.app"],
 		methods: ["GET", "POST","OPTIONS"],
 	},
 });
