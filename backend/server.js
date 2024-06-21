@@ -8,7 +8,7 @@ import authRoutes from "./routes/auth.routes.js";
 import messageRoutes from "./routes/message.routes.js";
 import userRoutes from "./routes/user.routes.js";
 
-/* import connectToMongoDB from "./db/connectToMongoDB.js"; */
+import connectToMongoDB from "./db/connectToMongoDB.js";
 import { app, server } from "./socket/socket.js";
 import cors from "cors";
 const PORT = process.env.PORT || 5001;
@@ -33,14 +33,7 @@ app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(cookieParser());
-
-try {
-    mongoose.connect(process.env.MONGODB_URI);
-    console.log("Connected to mongoDB");
-} catch (error) {
-    console.log("Error: ", error);
-}
-
+connectToMongoDB();
 app.use("/auth",cors(corsOptions), authRoutes);
 app.use("/messages",cors(corsOptions), messageRoutes);
 app.use("/users",cors(corsOptions), userRoutes);
