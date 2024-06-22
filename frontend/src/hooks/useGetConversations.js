@@ -9,7 +9,9 @@ const useGetConversations = () => {
 		const getConversations = async () => {
 			setLoading(true);
 			try { 
-				const res = await fetch(`${import.meta.env.REACT_APP_URL}/users`);
+				const res = await fetch(`${import.meta.env.REACT_APP_URL}/users`,{
+					credentials: 'include' // Include cookies in the request
+				});
 				const data = await res.json();
 				if (data.error) {
 					throw new Error(data.error);
