@@ -25,6 +25,7 @@ const generateTokenAndSetCookie = (userId, res) => {
             sameSite: "strict", // prevent CSRF attacks
             secure: process.env.NODE_ENV !== "development", // set secure flag based on environment
         });
+          console.log("Cookie set successfully.");
     } catch (error) {
         console.error("Error generating token:", error.message);
         // Handle error appropriately, e.g., send an error response
