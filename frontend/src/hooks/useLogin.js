@@ -8,7 +8,7 @@ const useLogin = () => {
 
 	const login = async (username, password) => {
 		const success = handleInputErrors(username, password);
-		if (!success) return;
+		if (!success) return; 
 		setLoading(true);
 		try {
 			const res = await fetch(`${import.meta.env.REACT_APP_URL}/auth/login`, {
