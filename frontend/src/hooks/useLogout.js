@@ -8,7 +8,7 @@ const useLogout = () => {
 
 	const logout = async () => {
 		setLoading(true);
-		try {
+		try { 
 			const res = await fetch(`${import.meta.env.REACT_APP_URL}/auth/logout`, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
