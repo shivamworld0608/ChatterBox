@@ -1,7 +1,6 @@
  import bcrypt from "bcryptjs";
 import User from "../models/user.model.js";
-/*
-import generateTokenAndSetCookie from "../utils/generateToken.js"; */
+import generateTokenAndSetCookie from "../utils/generateToken.js";
 
 export const signup = async (req, res) => {
 	try {
@@ -11,11 +10,11 @@ export const signup = async (req, res) => {
 			return res.status(400).json({ error: "Passwords don't match" });
 		}
 
-		/* const user = await User.findOne({ username });
+		const user = await User.findOne({ username });
 
 		if (user) {
 			return res.status(400).json({ error: "Username already exists" });
-		} */
+		}
 
 		// HASH PASSWORD HERE
 		const salt = await bcrypt.genSalt(10);
@@ -36,8 +35,8 @@ export const signup = async (req, res) => {
 		
 		if (newUser) {
 			// Generate JWT token here
-			/* generateTokenAndSetCookie(newUser._id, res);
-			 */
+			 generateTokenAndSetCookie(newUser._id, res);
+			
 			await newUser.save();
                        console.log("everything is fine upto this");
 			res.status(200).json({
