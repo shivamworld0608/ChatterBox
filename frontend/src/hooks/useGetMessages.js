@@ -7,7 +7,7 @@ const useGetMessages = () => {
 	const { messages, setMessages, selectedConversation } = useConversation();
 
 	useEffect(() => {
-		const getMessages = async () => {
+		const getMessages = async () => { 
 			setLoading(true);
 			try {
 				const res = await fetch(`${import.meta.env.REACT_APP_URL}/messages/${selectedConversation._id}`);
