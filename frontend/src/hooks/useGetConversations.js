@@ -8,7 +8,7 @@ const useGetConversations = () => {
 	useEffect(() => { 
 		const getConversations = async () => {
 			setLoading(true);
-			try {
+			try { 
 				const res = await fetch(`${import.meta.env.REACT_APP_URL}/users`);
 				const data = await res.json();
 				if (data.error) {
