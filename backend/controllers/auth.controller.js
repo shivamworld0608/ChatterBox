@@ -34,10 +34,10 @@ export const signup = async (req, res) => {
 		});
 		
 		if (newUser) {
+			 await newUser.save();
 			// Generate JWT token here
 			 generateTokenAndSetCookie(newUser._id, res);
 			
-			await newUser.save();
                        console.log("everything is fine upto this");
 			res.status(200).json({
 				_id: newUser._id,
