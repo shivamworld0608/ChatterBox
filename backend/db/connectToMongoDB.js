@@ -4,7 +4,7 @@ const connectToMongoDB = async () => {
 	try {
 		await mongoose.connect(process.env.MONGOURI, { 
                 useNewUrlParser: true, 
-                useUnifiedTopology: true,
+                useUnifiedTopology: true, 
     });
 		console.log("MongoDB URI:", process.env.MONGOURI);
 		console.log("Connected to MongoDB"); 
