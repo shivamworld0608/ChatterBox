@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 5001;
 dotenv.config();
 
 const corsOptions = {
-    origin: '*',
+    origin:'https://c-box.vercel.app',
     credential: true,
     methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ['Content-Type', 'Authorization']
