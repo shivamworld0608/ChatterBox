@@ -7,7 +7,7 @@ const app = express();
 
 const corsOptions = {
     origin: '*',
-    credential: true,
+    credentials: true,
     methods: ["GET", "POST", "OPTIONS"],
 };
 
@@ -19,8 +19,9 @@ app.use(cookieParser());
 const server = http.createServer(app);
 const io = new Server(server, {
 	cors: {
-		origin: ["https://c-box.vercel.app"],
+		origin: "https://c-box.vercel.app",
 		methods: ["GET", "POST","OPTIONS"],
+		credentials: true
 	},
 });
 
