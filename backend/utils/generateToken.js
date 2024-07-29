@@ -22,7 +22,7 @@ const generateTokenAndSetCookie = (userId, res) => {
         res.cookie("jwt", token, {
             maxAge: 15 * 24 * 60 * 60 * 1000, // 15 days in milliseconds
             httpOnly: true, // prevent XSS attacks
-            sameSite: "strict", // prevent CSRF attacks
+            sameSite: "None", // prevent CSRF attacks ->i have changed it
             secure: process.env.NODE_ENV !== "development", // set secure flag based on environment
         });
           console.log("Cookie set successfully.");
