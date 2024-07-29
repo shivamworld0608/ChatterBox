@@ -15,7 +15,7 @@ export const SocketContextProvider = ({ children }) => {
 
 	useEffect(() => {
 		if (authUser) { 
-			const socket = io("https://chatterbox-nine.vercel.app", {
+			const socket = io(`${import.meta.env.REACT_APP_URL}`, {
 				query: {
 					userId: authUser._id,
 				},
