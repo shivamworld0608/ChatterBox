@@ -6,7 +6,7 @@ import cookieParser from 'cookie-parser';
 const app = express();
 
 const corsOptions = {
-    origin: '*',
+    origin: 'https://c-box.vercel.app',
     credentials: true,
     methods: ["GET", "POST", "OPTIONS"],
 };
