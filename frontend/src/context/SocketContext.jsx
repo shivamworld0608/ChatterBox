@@ -21,12 +21,12 @@ export const SocketContextProvider = ({ children }) => {
 				},
 				withCredentials: true,
 				transportOptions: {
-    polling: {
-      extraHeaders: {
-        'X-Custom-Header': 'value'
-      }
-    }
-  }
+                              polling: {
+                                extraHeaders: {
+                                    'X-Custom-Header': 'value'
+                                }
+                              }
+                              },
 				reconnectionAttempts: 5, // number of reconnection attempts
 			        reconnectionDelay: 1000, // delay between reconnections
 			});
