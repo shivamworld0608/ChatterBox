@@ -12,7 +12,7 @@ const corsOptions = {
   methods: ["GET", "POST", "OPTIONS"],
 };
 
-app.options("*", cors(corsOptions));
+app.options("https://c-box.vercel.app", cors(corsOptions));
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
