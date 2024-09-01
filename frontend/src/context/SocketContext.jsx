@@ -22,7 +22,15 @@ export const SocketContextProvider = ({ children }) => {
 				withCredentials: true, 
 			});
 
+			socket.on("connect_error", (err) => {
+			console.error("WebSocket connection error:", err);
+		});
+
+		socket.on("connect", () => {
+			console.log("WebSocket connected successfully");
 			setSocket(socket);
+		});
+
 
 			// socket.on() is used to listen to the events. can be used both on client and server side
 			socket.on("getOnlineUsers", (users) => {
@@ -31,11 +39,14 @@ export const SocketContextProvider = ({ children }) => {
 
 			return () =>{ 
 				socket.off('getOnlineUsers');
-				socket.close();}
+				socket.close();
+			        console.log("WebSocket connection closed");
+			}
 		} else {
 			if (socket) {
 				socket.close();
 				setSocket(null);
+				console.log("Socket cleared");
 			}
 		}
 	}, [authUser]);
